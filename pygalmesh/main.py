@@ -253,6 +253,7 @@ def generate_volume_mesh_from_surface_mesh(
     verbose: bool = True,
     reorient: bool = False,
     seed: int = 0,
+    feature_angle: float = 0.0,
 ):
     mesh = meshio.read(filename)
 
@@ -281,6 +282,7 @@ def generate_volume_mesh_from_surface_mesh(
         verbose=verbose,
         reorient=reorient,
         seed=seed,
+        feature_angle=feature_angle
     )
 
     mesh = meshio.read(outfile)

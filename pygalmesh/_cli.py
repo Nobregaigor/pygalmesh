@@ -341,6 +341,14 @@ def _cli_volume_from_surface(parser):
         default=False,
         help="automatically fix face orientation (default: False)",
     )
+    
+    parser.add_argument(
+        "--feature-angle",
+        "-fa",
+        type=float,
+        default=0.0,
+        help="Feature angle (default: 0.0)",
+    )
 
     parser.add_argument(
         "--quiet",

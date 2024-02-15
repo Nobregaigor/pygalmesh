@@ -1,0 +1,89 @@
+# This file created by conda-build 3.22.0
+# meta.yaml template originally from:
+# D:\a\1\s\recipe, last modified Sun Oct 30 10:10:41 2022
+# ------------------------------------------------
+
+package:
+  name: pygalmesh
+  version: 0.10.8
+source:
+  path: ..
+build:
+  entry_points:
+    - pygalmesh = pygalmesh._cli:cli
+  number: '1'
+  string: py38h9412172_1
+requirements:
+  build:
+    - vs2019_win-64 19.29.30139 hb9aee9d_9
+    - vswhere 3.0.3 h57928b3_0
+  host:
+    - boost-cpp
+    - bzip2
+    - ca-certificates
+    - cgal-cpp 5.5  # needs to be version 5.5 due to lloyd and odt changes in >=5.6*
+    - eigen >=3.4.0
+    - libffi >=3.4.2
+    - libsqlite >=3.39.4
+    - libzlib >=1.2.13
+    - mpfr >=4.1.0,<5.0a0
+    - mpir >=3.0.0,<4.0a0
+    - openssl >=3.0.5
+    - pip
+    - pybind11 >=2.10.0
+    - pybind11-global >=2.10.0
+    - python 3.10.*
+    # - python >=3.8.13, <3.11.0a0
+    # - python_abi 3.8 2_cp38
+    - setuptools >=65.5.0
+    - sqlite >=3.39.4 
+    - tk >=8.6.12 
+    - ucrt >=10.0.22621.0
+    - vc >=14.3,<15
+    - vs2015_runtime >=14.32.31332 
+    - wheel >=0.37.1
+    - xz >=5.2.6
+    - zstd >=1.5.2
+  run:
+    - importlib_metadata
+    - meshio
+    - mpfr >=4.1.0,<5.0a0
+    - mpir >=3.0.0,<4.0a0
+    # - python >=3.8,<3.9.0a0
+    # - python_abi 3.8.* *_cp38
+    - python 3.10.*  # Keep Python version constraint
+    # - python_abi 3.8.* *_cp38  # Adjust if necessary
+    - ucrt >=10.0.20348.0
+    - vc >=14.2,<15
+    - vs2015_runtime >=14.29.30139
+test:
+  commands:
+    - pytest --codeblocks
+    - pygalmesh volume-from-surface -h
+    - pygalmesh remesh-surface -h
+    - pygalmesh from-inr -h
+  imports:
+    - pygalmesh
+  requires:
+    - numpy
+    - pytest
+    - pytest-codeblocks
+  source_files:
+    - tests
+about:
+  description: "pygalmesh is a Python frontend to CGAL\u2019s 3D mesh generation capabilities.\
+    \ pygalmesh makes it easy to create high-quality 3D volume meshes, periodic volume\
+    \ meshes, and surface meshes.\n"
+  dev_url: https://github.com/nschloe/pygalmesh
+  doc_url: https://github.com/nschloe/pygalmesh
+  home: https://github.com/nschloe/pygalmesh/
+  license: GPL-3.0-or-later
+  license_family: GPL
+  license_file: LICENSE
+  summary: "A Python frontend to CGAL\u2019s 3D mesh generators."
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - flothesof
+    - nschloe
